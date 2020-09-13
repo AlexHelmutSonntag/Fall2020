@@ -9,7 +9,7 @@ public class Odd {
         }
         else
         {
-            int num = Integer.parseInt(args[0]);
+            int num = Math.abs(Integer.parseInt(args[0]));
             String answer = (num %2 ==1)? "odd" : "even";
             System.out.println(answer);
         }
