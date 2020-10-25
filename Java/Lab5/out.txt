@@ -1,0 +1,5 @@
+the sum of the row no. 1= 9
+the sum of the row no. 2= 10
+the sum of the row no. 3= 2
+the sum of the row no. 4= 18
+the sum of the row no. 5= 99
