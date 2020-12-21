@@ -1,39 +1,49 @@
-// import java.io.BufferedReader;
-// import java.io.PrintWriter;
-import java.io.*;
-public class Main {
-    public static void main(String[] args) {
-        if (args.length != 2) {
-            System.err.println("Wrong no. of arguments. Please pass two files.");
-        }
-        String inputFile = args[0];
-        String outputFile = args[1];
-        summarize(inputFile, outputFile);
-    }
+import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
 
-    private static void summarize(String inputFile, String outputFile) {
-        File in = new File(inputFile);
-        File out = new File(outputFile);
-        
+class Main
+{
+    public static void main(String[] args)
+    {
+        ExtendedString temp1 = new ExtendedString("Java programming");
+        ExtendedString temp2 = new ExtendedString("C++ programming");
 
-        try (BufferedReader buffer_reader = new BufferedReader(new FileReader(in));
-                PrintWriter print_writer = new PrintWriter(out)) {
-            String line;
-            int row_count = 0;
-            while (null != (line = buffer_reader.readLine())) {
-                String[] database = line.split(",");
-                row_count++;
-                int sum = 0;
-                for (String num : database) {
-                    int i = Integer.parseInt(num);
-                    sum += i;
-                }
-                print_writer.println("the sum of the row no. "+ row_count+ "= " + sum);
-            }
-        } catch (IOException e) {
-            System.err.println("An IO error occured.");
+        System.out.println("temp1.compareTo(temp2): " + temp1.compareTo(temp2));
+        System.out.println("temp2.compareTo(temp1): " + temp2.compareTo(temp1));
+
+        Iterator<Character> it = temp1.iterator();
+
+        while (it.hasNext())
+        {
+            char ch = it.next();
+            System.out.println("ch: " + ch);
         }
 
+        System.out.println("-------------------------------------------------------");
+
+        it = temp1.iterator();
+        if (it.hasNext())
+        {
+            it.remove();
+        }
+
+        while (it.hasNext())
+        {
+            char ch = it.next();
+            System.out.println("ch: " + ch);
+        }
+
+        ArrayList<ExtendedString> list = new ArrayList<ExtendedString>();
+        list.add(new ExtendedString("This is a full sentence."));
+        list.add(temp1);
+        list.add(temp2);
+        list.add(new ExtendedString("world"));
+        list.add(new ExtendedString("hello"));
+        list.add(new ExtendedString("java"));
+        System.out.println(list);
+        System.out.println();
+        Collections.sort(list);
+        System.out.println(list);
     }
 }
-    
